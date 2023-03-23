@@ -1,8 +1,45 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.1.7.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     ast (2.4.2)
-    eventmachine (1.2.7)
+    async (1.31.0)
+      console (~> 1.10)
+      nio4r (~> 2.3)
+      timers (~> 4.1)
+    async-io (1.34.3)
+      async
+    async-websocket (0.8.0)
+      async-io
+      websocket-driver (~> 0.7.0)
+    builder (3.2.4)
+    concurrent-ruby (1.2.2)
+    console (1.15.3)
+      fiber-local
+    declarative (0.0.20)
+    dry-configurable (0.13.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.6)
+    dry-container (0.9.0)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.13, >= 0.13.0)
+    dry-core (0.7.1)
+      concurrent-ruby (~> 1.0)
+    dry-inflector (0.2.1)
+    dry-logic (1.2.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.5, >= 0.5)
+    dry-types (1.5.1)
+      concurrent-ruby (~> 1.0)
+      dry-container (~> 0.3)
+      dry-core (~> 0.5, >= 0.5)
+      dry-inflector (~> 0.1, >= 0.1.2)
+      dry-logic (~> 1.0, >= 1.0.2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -28,20 +65,59 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
-    faye-websocket (0.10.9)
-      eventmachine (>= 0.12.0)
-      websocket-driver (>= 0.5.1)
+    fiber-local (1.0.0)
+    foreman (0.87.2)
     gli (2.21.0)
+    grape (1.7.0)
+      activesupport
+      builder
+      dry-types (>= 1.1)
+      mustermann-grape (~> 1.0.0)
+      rack (>= 1.3.0)
+      rack-accept
+    grape-roar (0.4.1)
+      grape
+      multi_json
+      roar (~> 1.1.0)
+    grape-swagger (1.4.2)
+      grape (~> 1.3)
+    hashie (5.0.0)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
     json (2.6.3)
+    kaminari-core (1.2.2)
+    kaminari-grape (1.0.1)
+      grape
+      kaminari-core (~> 1.0)
     minitest (5.18.0)
+    multi_json (1.15.0)
     multipart-post (2.3.0)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    mustermann-grape (1.0.2)
+      mustermann (>= 1.0.0)
+    nio4r (2.5.8)
     parallel (1.22.1)
     parser (3.2.1.1)
       ast (~> 2.4.1)
+    rack (3.0.7)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
+    rack-rewrite (1.5.1)
+    rack-server-pages (0.1.0)
+      rack
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.7.0)
+    representable (3.2.0)
+      declarative (< 0.1.0)
+      trailblazer-option (>= 0.1.1, < 0.2.0)
+      uber (< 0.2.0)
     rexml (3.2.5)
+    roar (1.1.1)
+      representable (~> 3.0)
     rubocop (1.48.1)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -56,29 +132,46 @@ GEM
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    simple-slack-bot (0.2.0)
-      eventmachine (~> 1.0, >= 1.0.9)
-      faye-websocket (~> 0.10.2)
-      slack-ruby-client (~> 0.5.3)
-    slack-ruby-client (0.5.4)
-      faraday
+    slack-ruby-bot-server (2.1.0)
+      async
+      foreman
+      grape
+      grape-roar (>= 0.4.0)
+      grape-swagger
+      kaminari-grape
+      rack-cors
+      rack-rewrite
+      rack-server-pages
+      slack-ruby-client
+    slack-ruby-bot-server-events (0.3.2)
+      slack-ruby-bot-server (>= 0.12.0)
+    slack-ruby-client (1.0.0)
+      faraday (>= 1.0)
       faraday_middleware
       gli
-      json
+      hashie
       websocket-driver
+    timers (4.3.5)
+    trailblazer-option (0.1.2)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    uber (0.1.0)
     unicode-display_width (2.4.2)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  async-websocket (~> 0.8.0)
   minitest
   rake
   rubocop
-  simple-slack-bot
+  slack-ruby-bot-server-events
+  slack-ruby-client
 
 BUNDLED WITH
    2.4.9

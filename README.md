@@ -1,0 +1,1 @@
+This repo will be used to test creating a slack bot by using https://github.com/kciter/simple-slack-bot

@@ -7,6 +7,10 @@ RuboCop::RakeTask.new(:lint) do |task|
   task.fail_on_error = false
 end
 
+task :run do
+  ruby 'config/application.rb'
+end
+
 # Examples:
 # task :run do
 #   ruby 'lib/cool_program.rb'

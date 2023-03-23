@@ -1,4 +1,4 @@
-This repo will be used to test creating a slack bot by using [Slack Ruby Client](https://github.com/dblock/slack-ruby-client) and [Slack Ruby Bot Server Events Extension](https://github.com/slack-ruby/slack-ruby-bot-server-events)
+This repo will be used to test creating a slack bot by using [Slack Ruby Client](https://github.com/dblock/slack-ruby-client), [Slack Ruby Bot Server](https://github.com/slack-ruby/slack-ruby-bot-server) and [Slack Ruby Bot Server Events Extension](https://github.com/slack-ruby/slack-ruby-bot-server-events)
 
 Setting up fresh Ruby project: https://dev.to/deciduously/setting-up-a-fresh-ruby-project-56o4
 
